@@ -36,16 +36,32 @@ if ($password !== $confirmPassword) {
     exit;
 }
 
+$password = password_hash($password, PASSWORD_BCRYPT);
+
 $uuid = Uuid::uuid4()->toString();
 
-$SQL->Query("INSERT INTO `users`
-    (`id`, `uuid`, `email`, `password`, `firstname`, `middlename`, `surname`, `phone`, `birthdate`, `gender`, `preferred_name`, `preferred_pronouns`, `notes`)
+if (!$SQL->Query("INSERT INTO `users`
+    (`id`, `uuid`, `role`, `email`, `password`, `code`)
     VALUES
     (
         NULL,
         '{$SQL->Escape($uuid)}',
+        0,
         '{$SQL->Escape($email)}',
         '{$SQL->Escape($password)}',
+        NULL
+    )
+")) {
+    header('Location: /register?error=db');
+    exit;
+}
+
+if (!$SQL->Query("INSERT INTO `user_details`
+    (`id`, `uuid`, `firstname`, `middlename`, `surname`, `phone`, `birthdate`, `gender`, `preferred_name`, `pronouns`)
+    VALUES
+    (
+        NULL,
+        '{$SQL->Escape($uuid)}',
         '{$SQL->Escape($firstname)}',
         '{$SQL->Escape($middlename)}',
         '{$SQL->Escape($surname)}',
@@ -53,7 +69,12 @@ $SQL->Query("INSERT INTO `users`
         '{$SQL->Escape($dob)}',
         '{$SQL->Escape($gender)}',
         '{$SQL->Escape($preferredName)}',
-        '{$SQL->Escape($pronouns)}',
-        NULL
+        '{$SQL->Escape($pronouns)}'
     )
-");
+")) {
+    header('Location: /register?error=db');
+    exit;
+}
+
+header('Location: /dashboard');
+exit;
