@@ -77,5 +77,18 @@ if (!$SQL->Query("INSERT INTO `user_details`
     exit;
 }
 
+if (!$SQL->Query("INSERT INTO `user_permissions`
+    (`id`, `uuid`, `access-holidays`, `manage-vacancies`, `manage-system-settings`)
+    VALUES
+    (
+        NULL,
+        '{$SQL->Escape($uuid)}',
+        false,false,false
+    )
+")) {
+    header('Location: /register?error=database');
+    exit;
+}
+
 header('Location: /login');
 exit;

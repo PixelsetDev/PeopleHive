@@ -31,13 +31,18 @@ $role = $UserInfo->getRole();
                 <?php if ($role >= 1) { ?>
                 <a class="card-yellow" href="/dashboard/workplace">My Job</a>
                 <a class="card-yellow" href="/dashboard/documents">My Documents</a>
+                <?php if ($UserInfo->hasPermission('access-holidays')) { ?>
                 <a class="card-yellow" href="/dashboard/holidays">Holidays</a>
                 <?php } ?>
+                <?php } ?>
                 <a class="card-yellow" href="/jobs">Vacancies</a>
-                <?php if ($role >= 2) { ?>
+                <?php if ($UserInfo->hasPermission('manage-vacancies')) { ?>
                 <a class="card-yellow" href="/dashboard/jobs">Manage Vacancies</a>
+                <?php } if ($role >= 2) { ?>
                 <a class="card-yellow" href="/dashboard/department">Department Overview</a>
                 <a class="card-yellow" href="/dashboard/company">Company Overview</a>
+                <?php } if ($UserInfo->hasPermission('manage-system-settings')) { ?>
+                <a class="card-yellow" href="/dashboard/settings">System Settings</a>
                 <?php } ?>
             </div>
 
