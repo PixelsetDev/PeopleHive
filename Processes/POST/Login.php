@@ -22,7 +22,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     }
 
     $Auth = new Session();
-    $Auth->Login($info['uuid']);
+    $Auth->Login($info['uuid'].'$'.date('Y-m-d'));
+    $_SESSION['uuid'] = $info['uuid'];
 
     header('Location: /dashboard');
     exit;
