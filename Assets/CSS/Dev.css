@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+header {
+    @apply bg-yellow-500 text-white text-center font-black;
+    @apply lg:py-24 md:py-16 sm:py-8 py-4;
+    @apply lg:px-16 md:px-8 sm:px-4 px-2;
+}
+
+main {
+    @apply lg:py-24 md:py-16 sm:py-8 py-4;
+    @apply lg:px-16 md:px-8 sm:px-6 px-4;
+}
+
+hr { @apply max-w-lg px-6 w-full mx-auto; }
+
+h1, .txt-5xl { @apply lg:text-8xl md:text-7xl sm:text-6xl text-5xl font-bold; }
+.txt-4xl { @apply lg:text-7xl md:text-6xl sm:text-5xl text-4xl font-bold; }
+.txt-3xl { @apply lg:text-6xl md:text-5xl sm:text-4xl text-3xl font-bold; }
+h2, .txt-2xl { @apply lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold; }
+.txt-xl { @apply lg:text-4xl md:text-3xl sm:text-2xl text-xl font-bold; }
+h3, .txt-lg { @apply lg:text-3xl md:text-2xl sm:text-xl text-lg font-bold; }
+p, body, .txt-std { @apply lg:text-2xl md:text-xl sm:text-lg text-base; }
+.txt-sm { @apply lg:text-xl md:text-lg sm:text-base text-sm; }
+.txt-xs { @apply lg:text-lg md:text-base sm:text-sm text-xs; }
+
+input, select { @apply rounded-none appearance-none p-2 border bg-neutral-50; }
+input[type=submit], input[type=button] { @apply bg-neutral-200 hover:bg-neutral-100 transition duration-200 cursor-pointer; }
+label { @apply txt-xs; }
+
+.cards { @apply grid md:grid-cols-2 lg:gap-6 md:gap-4 sm:gap-3 gap-2 }
+
+.card {
+    @apply transition duration-200;
+    @apply text-center;
+    @apply lg:py-5 md:py-4 sm:py-3 py-2;
+    @apply lg:px-6 md:px-5 sm:px-4 px-3;
+}
+
+.card-yellow { @apply card bg-yellow-500 hover:bg-yellow-400 text-white font-bold; }
+
+.req { @apply text-red-500; }
