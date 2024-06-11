@@ -28,21 +28,28 @@ $role = $UserInfo->getRole();
 
             <div class="cards">
                 <a class="card-yellow" href="/profile">My Account</a>
-                <?php if ($role >= 1) { ?>
+                <?php if ($role == ROLE_ONBOARDING) { ?>
+                <a class="card-yellow" href="/dashboard/onboarding">Onboarding</a>
+                <a class="card-yellow" href="/dashboard/documents">My Documents</a>
+                <?php } ?>
+                <?php if ($role >= ROLE_EMPLOYEE) { ?>
                 <a class="card-yellow" href="/dashboard/workplace">My Job</a>
                 <a class="card-yellow" href="/dashboard/documents">My Documents</a>
-                <?php if ($UserInfo->hasPermission('access-holidays')) { ?>
                 <a class="card-yellow" href="/dashboard/holidays">Holidays</a>
                 <?php } ?>
-                <?php } ?>
                 <a class="card-yellow" href="/jobs">Vacancies</a>
+                <?php if ($role >= ROLE_EMPLOYEE) { ?>
                 <?php if ($UserInfo->hasPermission('manage-vacancies')) { ?>
                 <a class="card-yellow" href="/dashboard/jobs">Manage Vacancies</a>
-                <?php } if ($role >= 2) { ?>
-                <a class="card-yellow" href="/dashboard/department">Department Overview</a>
+                <?php } if ($role >= ROLE_MANAGER) { ?>
+                <a class="card-yellow" href="/dashboard/team">Team Overview</a>
                 <a class="card-yellow" href="/dashboard/company">Company Overview</a>
+                <?php } if ($UserInfo->hasPermission('manage-teams')) { ?>
+                <a class="card-yellow" href="/dashboard/teams">Manage Teams</a>
                 <?php } if ($UserInfo->hasPermission('manage-system-settings')) { ?>
                 <a class="card-yellow" href="/dashboard/settings">System Settings</a>
+                <a class="card-yellow" href="/dashboard/logs">System Logs</a>
+                <?php } ?>
                 <?php } ?>
             </div>
 

@@ -42,7 +42,7 @@ $password = password_hash($password, PASSWORD_BCRYPT);
 $uuid = Uuid::uuid4()->toString();
 
 if (!$SQL->Query("INSERT INTO `users`
-    (`id`, `uuid`, `role`, `email`, `password`, `code`)
+    (`id`, `uuid`, `role`, `email`, `password`, `team`, `code`)
     VALUES
     (
         NULL,
@@ -50,6 +50,7 @@ if (!$SQL->Query("INSERT INTO `users`
         0,
         '{$SQL->Escape($email)}',
         '{$SQL->Escape($password)}',
+        NULL,
         NULL
     )
 ")) {
@@ -78,7 +79,7 @@ if (!$SQL->Query("INSERT INTO `user_details`
 }
 
 if (!$SQL->Query("INSERT INTO `user_permissions`
-    (`id`, `uuid`, `access-holidays`, `manage-vacancies`, `manage-system-settings`)
+    (`id`, `uuid`, `request-holidays`, `manage-vacancies`, `manage-system-settings`, `manage-teams`)
     VALUES
     (
         NULL,
