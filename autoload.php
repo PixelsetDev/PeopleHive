@@ -12,6 +12,9 @@ require_once __DIR__ . '/starlight/HTTP/Router.php';
 require_once __DIR__ . '/starlight/Security/CSRF.php';
 require_once __DIR__ . '/starlight/Security/XSS.php';
 
+require_once __DIR__ . '/Processes/User/IsAuthenticated.php';
+require_once __DIR__ . '/Processes/User/UserInfo.php';
+
 require_once __DIR__ . '/Router/Main.php';
 require_once __DIR__ . '/Router/Authenticated.php';
 require_once __DIR__ . '/Router/router.php';
