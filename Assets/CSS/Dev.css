@@ -11,10 +11,9 @@ header {
     @apply lg:px-16 md:px-8 sm:px-4 px-2;
 }
 
-nav {
-    @apply flex space-x-4 py-2;
-    @apply lg:px-16 md:px-8 sm:px-4 px-2;
-}
+nav { @apply flex space-x-2 py-2 lg:px-16 md:px-8 sm:px-4 px-2; }
+nav>a { @apply px-2 py-1; }
+nav>a:not(.nobtn) { @apply bg-neutral-200 hover:bg-neutral-100 transition duration-200; }
 
 footer {
     @apply text-center txt-xs;
@@ -55,3 +54,5 @@ label { @apply txt-xs; }
 .card-yellow { @apply card bg-amber-500 hover:bg-amber-400 text-white font-bold; }
 
 .req { @apply text-red-500; }
+
+.error { @apply bg-red-200 border-l-2 border-red-700 text-red-700 px-2 py-1; }

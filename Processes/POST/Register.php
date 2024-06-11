@@ -12,6 +12,7 @@ $middlename = trim($_POST['middlename']);
 $surname = trim($_POST['surname']);
 $phone = trim($_POST['phone']);
 $dob = trim($_POST['dob']);
+var_dump($dob);
 
 if (COLLECT_GENDER) {
     $gender = trim($_POST['gender']);
@@ -29,9 +30,9 @@ if (COLLECT_PREFERRED_DETAILS) {
 
 $email = trim($_POST['email']);
 $password = trim($_POST['password']);
-$confirmPassword = trim($_POST['confirm_password']);
+$confirmPassword = trim($_POST['confirmpassword']);
 
-if ($password !== $confirmPassword) {
+if ($password != $confirmPassword) {
     header('Location: /register?error=password');
     exit;
 }
@@ -52,7 +53,7 @@ if (!$SQL->Query("INSERT INTO `users`
         NULL
     )
 ")) {
-    header('Location: /register?error=db');
+    header('Location: /register?error=database');
     exit;
 }
 
@@ -72,9 +73,9 @@ if (!$SQL->Query("INSERT INTO `user_details`
         '{$SQL->Escape($pronouns)}'
     )
 ")) {
-    header('Location: /register?error=db');
+    header('Location: /register?error=database');
     exit;
 }
 
-header('Location: /dashboard');
+header('Location: /login');
 exit;

@@ -1,7 +1,9 @@
 <?php
 
+const CONTACT_DETAILS = 'our HR team';
+
 const DB_HOST = 'localhost';
-const DB_USER = '';
+const DB_USER = 'root';
 const DB_PASS = '';
 const DB_NAME = 'PeopleHive';
 

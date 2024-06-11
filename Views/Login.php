@@ -13,18 +13,27 @@
         </header>
 
         <main>
-            <form action="/auth/login" method="POST" class="grid gap-4">
+            <?php
+            if (isset($_GET['error'])) {
+                $error = match ($_GET['error']) {
+                    'incorrect' => 'Username or password is incorrect.',
+                    default => 'An unexpected error occurred. Please try again.',
+                }
+                ?>
+                <div class="error"><?= $error; ?></div><br>
+            <?php } ?>
+            <form action="/auth/login" method="POST" class="grid lg:grid-cols-2 gap-4">
                 <div class="grid">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username">
+                    <label for="email">Email address <sup class="req">*</sup></label>
+                    <input type="email" name="email" id="email">
                 </div>
 
                 <div class="grid">
-                    <label for="password">Password</label>
+                    <label for="password">Password <sup class="req">*</sup></label>
                     <input type="password" name="password" id="password">
                 </div>
 
-                <input type="submit" value="Login">
+                <input type="submit" value="Login" class="lg:col-span-2">
             </form>
         </main>
 

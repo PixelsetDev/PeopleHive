@@ -13,6 +13,16 @@
         </header>
 
         <main>
+            <?php
+            if (isset($_GET['error'])) {
+                $error = match ($_GET['error']) {
+                    'password' => 'Password and confirm password do not match.',
+                    'database' => 'An issue was encountered whilst accessing the database, please contact '.CONTACT_DETAILS.' for assistance.',
+                    default => 'An unexpected error occurred. Please try again.',
+                }
+            ?>
+                <div class="error"><?= $error; ?></div><br>
+            <?php } ?>
             <form action="/auth/register" method="POST" class="grid gap-4">
                 <h3>Your information</h3>
                 <p class="text-xs italic">
@@ -37,8 +47,8 @@
                         <input type="tel" name="phone" id="phone" required>
                     </div>
                     <div class="grid">
-                        <label for="phone">Date of Birth <sup class="req">*</sup></label>
-                        <input type="date" name="phone" id="phone" required>
+                        <label for="dob">Date of Birth <sup class="req">*</sup></label>
+                        <input type="date" name="dob" id="dob" required>
                     </div>
                     <?php if (COLLECT_GENDER) { ?>
                     <div class="grid">
@@ -104,7 +114,7 @@
 
                 <?php } ?>
 
-                <input type="submit" value="Login">
+                <input type="submit" value="Register">
             </form>
         </main>
 
