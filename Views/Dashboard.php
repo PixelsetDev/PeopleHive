@@ -36,8 +36,8 @@ $role = $UserInfo->getRole();
                 <a class="card-yellow" href="/jobs">Vacancies</a>
                 <?php if ($role >= 2) { ?>
                 <a class="card-yellow" href="/dashboard/jobs">Manage Vacancies</a>
-                <?php } if ($role >= 3) { ?>
-                <a class="card-yellow" href="/dashboard/company">My Company</a>
+                <a class="card-yellow" href="/dashboard/department">Department Overview</a>
+                <a class="card-yellow" href="/dashboard/company">Company Overview</a>
                 <?php } ?>
             </div>
 
