@@ -14,3 +14,5 @@ require_once __DIR__ . '/starlight/Security/XSS.php';
 
 require_once __DIR__ . '/Router/Main.php';
 require_once __DIR__ . '/Router/router.php';
+
+require_once __DIR__ . '/Views/404.php';

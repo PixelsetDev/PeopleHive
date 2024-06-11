@@ -6,9 +6,12 @@
         <link rel="stylesheet" href="/Assets/CSS/Dist.css" type="text/css">
     </head>
     <body>
+        <?php require_once __DIR__ . "/Include/Nav.php"; ?>
+
         <header>
             <h1>Register</h1>
         </header>
+
         <main>
             <form action="/auth/register" method="POST" class="grid gap-4">
                 <h3>Your information</h3>
@@ -104,5 +107,7 @@
                 <input type="submit" value="Login">
             </form>
         </main>
+
+        <?php require_once __DIR__ . "/Include/Footer.php"; ?>
     </body>
 </html>
